@@ -62,7 +62,8 @@ class UpdateWorker
     to = sms_invitation[:to]
     puts "SMS to: #{url} to #{to} + #{message}"
     response = HTTP.post(url, json: sms_invitation)
-    raise "API failed: #{update_url}" if response.status >= 400
+    puts response
+    raise "API failed: #{url}" if response.status >= 400
   end
 end
 
