@@ -14,7 +14,7 @@ namespace :docker do
   task :run do
     puts "\nRUNNING WORKER WITH LOCAL CONTEXT"
     sh "docker run -e \"CONFIG_FILE=#{CONFIG_FILE}\" --rm -it " \
-       "-v \"$PWD\":/worker -w /worker " \
+       "-v \"$PWD\":/worker -w /worker  --net=\"host\" " \
        "#{USERNAME}/#{IMAGE}:#{VERSION} ruby #{WORKER}"
   end
 
